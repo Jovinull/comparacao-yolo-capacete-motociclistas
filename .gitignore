@@ -1,0 +1,15 @@
+# Ambiente e cache locais
+/env/
+/.venv/
+/.cache/
+__pycache__/
+*.py[cod]
+
+# Pesos baixados e resultados do experimento
+/*.pt
+/weights/
+/runs/
+
+# Vídeos, quadros e anotações do grupo não entram no Git
+/data/helmet/*
+!/data/helmet/.gitkeep

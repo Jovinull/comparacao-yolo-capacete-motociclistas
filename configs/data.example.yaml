@@ -1,0 +1,8 @@
+# Copie para data/helmet/data.yaml e ajuste "path" para a raiz do conjunto.
+path: .
+train: images/train
+val: images/val
+test: images/test
+names:
+  0: com_capacete
+  1: sem_capacete

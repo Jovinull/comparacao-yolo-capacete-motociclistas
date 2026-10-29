@@ -130,16 +130,21 @@ def validate_dataset(data_yaml_path: Path) -> DatasetInfo:
     if int(config.get("nc", len(names) or 0)) != 2:
         errors.append("nc precisa ser 2")
 
+    declared_split_paths: dict[str, list[Path]] = {}
     for split in SPLITS:
         entries = config.get(split)
         if entries is None:
             errors.append(f"data.yaml não define a partição {split}")
+            declared_split_paths[split] = []
             continue
         entries = entries if isinstance(entries, list) else [entries]
+        declared_split_paths[split] = []
         for entry in entries:
             split_path = Path(str(entry))
             if not split_path.is_absolute():
                 split_path = root / split_path
+            split_path = split_path.resolve()
+            declared_split_paths[split].append(split_path)
             if not split_path.exists():
                 errors.append(f"Caminho de {split} não encontrado: {split_path}")
 
@@ -185,6 +190,12 @@ def validate_dataset(data_yaml_path: Path) -> DatasetInfo:
                     image_path = (root / relative_path).resolve()
                     if not image_path.is_relative_to(root):
                         errors.append(f"{prefix}: image_path sai da raiz do conjunto")
+                        continue
+                    if not any(
+                        image_path.is_relative_to(split_path)
+                        for split_path in declared_split_paths.get(split, [])
+                    ):
+                        errors.append(f"{prefix}: imagem não pertence ao caminho definido para {split} em data.yaml")
                         continue
                     normalized = relative_path.as_posix().casefold()
                     if normalized in image_paths_seen:

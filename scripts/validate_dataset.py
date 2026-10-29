@@ -15,7 +15,13 @@ import yaml
 
 
 SPLITS = ("train", "val", "test")
-EXPECTED_NAMES = ("com_capacete", "sem_capacete")
+EXPECTED_NAMES = (
+    "motocicleta",
+    "motociclista_com_capacete",
+    "motociclista_sem_capacete",
+    "capacete",
+)
+ALLOWED_CONDITIONS = {"low_light", "occlusion", "far_camera", "low_resolution", "passenger"}
 
 
 @dataclass(frozen=True)
@@ -25,6 +31,7 @@ class ManifestRecord:
     label_path: Path
     video_id: str
     split: str
+    conditions: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -127,8 +134,12 @@ def validate_dataset(data_yaml_path: Path) -> DatasetInfo:
     names = _normalize_names(config.get("names"))
     if names != EXPECTED_NAMES:
         errors.append(f"names precisa ser {list(EXPECTED_NAMES)} na ordem definida; recebido {list(names)}")
-    if int(config.get("nc", len(names) or 0)) != 2:
-        errors.append("nc precisa ser 2")
+    try:
+        declared_class_count = int(config.get("nc", len(names) or 0))
+    except (TypeError, ValueError):
+        declared_class_count = -1
+    if declared_class_count != len(EXPECTED_NAMES):
+        errors.append(f"nc precisa ser {len(EXPECTED_NAMES)}")
 
     declared_split_paths: dict[str, list[Path]] = {}
     for split in SPLITS:
@@ -160,6 +171,7 @@ def validate_dataset(data_yaml_path: Path) -> DatasetInfo:
     image_counts: Counter = Counter()
     video_counts: dict[str, set[str]] = {split: set() for split in SPLITS}
     class_counts: dict[str, Counter] = {split: Counter() for split in SPLITS}
+    condition_counts: dict[str, Counter] = {split: Counter() for split in SPLITS}
 
     try:
         with manifest_path.open("r", encoding="utf-8-sig", newline="") as stream:
@@ -178,6 +190,21 @@ def validate_dataset(data_yaml_path: Path) -> DatasetInfo:
                         continue
                     if split not in SPLITS:
                         errors.append(f"{prefix}: split precisa ser train, val ou test")
+                        continue
+                    conditions = tuple(
+                        sorted(
+                            {
+                                value.strip().lower()
+                                for value in (row.get("conditions") or "").split(";")
+                                if value.strip()
+                            }
+                        )
+                    )
+                    unknown_conditions = set(conditions) - ALLOWED_CONDITIONS
+                    if unknown_conditions:
+                        errors.append(
+                            f"{prefix}: condições desconhecidas: {', '.join(sorted(unknown_conditions))}"
+                        )
                         continue
 
                     relative_path = Path(raw_image)
@@ -222,8 +249,11 @@ def validate_dataset(data_yaml_path: Path) -> DatasetInfo:
                         )
                     image_counts[split] += 1
                     video_counts[split].add(video_id)
+                    condition_counts[split].update(conditions)
                     class_counts[split].update(_read_label_file(label_path, len(names), errors))
-                    records.append(ManifestRecord(image_path, relative_path, label_path, video_id, split))
+                    records.append(
+                        ManifestRecord(image_path, relative_path, label_path, video_id, split, conditions)
+                    )
     except OSError as exc:
         errors.append(f"Não foi possível ler {manifest_path}: {exc}")
 
@@ -235,9 +265,13 @@ def validate_dataset(data_yaml_path: Path) -> DatasetInfo:
     for class_id, class_name in enumerate(names):
         if class_counts["train"][class_id] == 0:
             errors.append(f"A classe {class_name} não tem objetos no treino")
-        for split in ("val", "test"):
-            if image_counts[split] and class_counts[split][class_id] == 0:
-                warnings.append(f"A classe {class_name} não tem objetos em {split}; métricas dessa classe serão limitadas")
+        if class_counts["val"][class_id] == 0:
+            errors.append(f"A classe {class_name} não tem objetos na validação; não é possível escolher o limiar comum")
+        if class_counts["test"][class_id] == 0:
+            errors.append(f"A classe {class_name} não tem objetos no teste; não é possível comparar todas as classes")
+
+    if len(video_counts["test"]) < 2:
+        warnings.append("O teste tem menos de dois vídeos; não será possível estimar o bootstrap pareado por vídeo")
 
     if errors:
         details = "\n".join(f"- {message}" for message in errors)
@@ -250,6 +284,9 @@ def validate_dataset(data_yaml_path: Path) -> DatasetInfo:
         "dataset_root": str(root),
         "images_by_split": dict(image_counts),
         "videos_by_split": {split: len(video_counts[split]) for split in SPLITS},
+        "condition_tagged_frames_by_split": {
+            split: dict(condition_counts[split]) for split in SPLITS
+        },
         "objects_by_split_and_class": {
             split: {name: class_counts[split][class_id] for class_id, name in enumerate(names)}
             for split in SPLITS

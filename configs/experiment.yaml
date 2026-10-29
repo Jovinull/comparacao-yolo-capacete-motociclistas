@@ -31,15 +31,18 @@ train:
 evaluation:
   split: test
   imgsz: 640
-  batch: 16
+  batch: 1
   conf: 0.001
   iou: 0.7
   max_det: 300
   plots: true
 
+threshold_selection:
+  confidence_floor: 0.001
+  confidence_grid: [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95]
+  match_iou: 0.5
+
 paired_analysis:
-  class_id: 1
-  confidence: 0.25
-  iou_match: 0.5
+  class_name: motociclista_sem_capacete
   bootstrap_samples: 10000
   seed: 42

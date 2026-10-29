@@ -3,6 +3,9 @@ path: .
 train: images/train
 val: images/val
 test: images/test
+nc: 4
 names:
-  0: com_capacete
-  1: sem_capacete
+  0: motocicleta
+  1: motociclista_com_capacete
+  2: motociclista_sem_capacete
+  3: capacete

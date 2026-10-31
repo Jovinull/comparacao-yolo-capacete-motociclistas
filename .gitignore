@@ -4,6 +4,7 @@
 /.cache/
 __pycache__/
 *.py[cod]
+*.cache
 
 # Pesos baixados e resultados do experimento
 /*.pt
@@ -13,3 +14,4 @@ __pycache__/
 # Vídeos, quadros e anotações do grupo não entram no Git
 /data/helmet/*
 !/data/helmet/.gitkeep
+/data/edgevision/

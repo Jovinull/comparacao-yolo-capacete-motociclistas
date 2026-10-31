@@ -1,0 +1,265 @@
+{
+  "run_id": "20261030_225248",
+  "created_at_utc": "2026-10-31T10:58:21.707948+00:00",
+  "runtime": {
+    "python": "3.12.10",
+    "operating_system": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 186 Stepping 3, GenuineIntel",
+    "torch": "2.5.1+cpu",
+    "ultralytics": "8.3.75",
+    "cuda_available": false
+  },
+  "ultralytics": "8.3.75",
+  "torch": "2.5.1+cpu",
+  "device": "cpu",
+  "dataset": {
+    "dataset": "EdgeVision Dataset",
+    "dataset_id": "j82bnw7gsr",
+    "doi": "10.17632/j82bnw7gsr.1",
+    "version": 1,
+    "license": "CC BY 4.0",
+    "class_names": [
+      "BikeWithRider",
+      "NoHelmet",
+      "Helmet"
+    ],
+    "images": 2392,
+    "instances": 8275,
+    "converted_instances": 8274,
+    "clipped_instances": 39,
+    "skipped_instances": 1,
+    "images_with_exif_dimension_correction": 34,
+    "reencoded_training_images": 222,
+    "seed": 42,
+    "split_ratios": {
+      "train": 0.8,
+      "val": 0.1,
+      "test": 0.1
+    },
+    "splits": {
+      "train": {
+        "images": 1913,
+        "images_with_class": {
+          "BikeWithRider": 1897,
+          "NoHelmet": 1321,
+          "Helmet": 1076
+        },
+        "instances_by_class": {
+          "BikeWithRider": 3040,
+          "NoHelmet": 2264,
+          "Helmet": 1331
+        }
+      },
+      "val": {
+        "images": 239,
+        "images_with_class": {
+          "BikeWithRider": 238,
+          "NoHelmet": 165,
+          "Helmet": 134
+        },
+        "instances_by_class": {
+          "BikeWithRider": 385,
+          "NoHelmet": 265,
+          "Helmet": 172
+        }
+      },
+      "test": {
+        "images": 240,
+        "images_with_class": {
+          "BikeWithRider": 238,
+          "NoHelmet": 166,
+          "Helmet": 135
+        },
+        "instances_by_class": {
+          "BikeWithRider": 368,
+          "NoHelmet": 281,
+          "Helmet": 168
+        }
+      }
+    },
+    "images_downloaded_this_run": 2392,
+    "image_bytes": 1601845084
+  },
+  "total_budget_hours": 12.0,
+  "evaluation_reserve_hours": 3.0,
+  "total_wall_time_seconds": 32731.875,
+  "models": {
+    "yolov8n": {
+      "initial_weights": "yolov8n.pt",
+      "best_weights": "runs/edgevision/20261030_225248/yolov8n_train/weights/best.pt",
+      "training_seconds": 16401.907,
+      "training_hours": 4.556085277777777,
+      "training_budget_hours": 4.5,
+      "budget_stop_requested": true,
+      "completed_epochs": 27
+    },
+    "yolo11n": {
+      "initial_weights": "yolo11n.pt",
+      "best_weights": "runs/edgevision/20261030_225248/yolo11n_train/weights/best.pt",
+      "training_seconds": 16220.265,
+      "training_hours": 4.505629166666666,
+      "training_budget_hours": 4.443862777777778,
+      "budget_stop_requested": true,
+      "completed_epochs": 24
+    }
+  },
+  "evaluation": {
+    "yolov8n": {
+      "val": {
+        "metrics/precision(B)": 0.9085080258956847,
+        "metrics/recall(B)": 0.874893598874204,
+        "metrics/mAP50(B)": 0.9319554041706363,
+        "metrics/mAP50-95(B)": 0.678981204355445,
+        "fitness": 0.7042786243369641,
+        "map": 0.678981204355445,
+        "map50": 0.9319554041706363,
+        "map75": 0.7555186643105726,
+        "mp": 0.9085080258956847,
+        "mr": 0.874893598874204,
+        "per_class": {
+          "BikeWithRider": {
+            "class_id": 0,
+            "precision_at_best_f1": 0.9347308310919382,
+            "recall_at_best_f1": 0.9299462639328357,
+            "f1_at_best_f1": 0.9323324091619559,
+            "map50": 0.972696151700198,
+            "map50_95": 0.8296205450996286
+          },
+          "NoHelmet": {
+            "class_id": 1,
+            "precision_at_best_f1": 0.9093709879679254,
+            "recall_at_best_f1": 0.8226415094339623,
+            "f1_at_best_f1": 0.8638347856029417,
+            "map50": 0.8998791001074403,
+            "map50_95": 0.5719634105478695
+          },
+          "Helmet": {
+            "class_id": 2,
+            "precision_at_best_f1": 0.8814222586271905,
+            "recall_at_best_f1": 0.872093023255814,
+            "f1_at_best_f1": 0.8767328237547021,
+            "map50": 0.9232909607042705,
+            "map50_95": 0.6353596574188372
+          }
+        }
+      },
+      "test": {
+        "metrics/precision(B)": 0.8835750149143027,
+        "metrics/recall(B)": 0.8758230944711589,
+        "metrics/mAP50(B)": 0.9135260496961131,
+        "metrics/mAP50-95(B)": 0.6598266407959869,
+        "fitness": 0.6851965816859995,
+        "map": 0.6598266407959869,
+        "map50": 0.9135260496961131,
+        "map75": 0.7555618226285219,
+        "mp": 0.8835750149143027,
+        "mr": 0.8758230944711589,
+        "per_class": {
+          "BikeWithRider": {
+            "class_id": 0,
+            "precision_at_best_f1": 0.9030344861463857,
+            "recall_at_best_f1": 0.9363576074263559,
+            "f1_at_best_f1": 0.919394199666412,
+            "map50": 0.9752457371925991,
+            "map50_95": 0.8070501813633207
+          },
+          "NoHelmet": {
+            "class_id": 1,
+            "precision_at_best_f1": 0.847316782003055,
+            "recall_at_best_f1": 0.8220640569395018,
+            "f1_at_best_f1": 0.8344994204768431,
+            "map50": 0.8625611844902648,
+            "map50_95": 0.5484657374287474
+          },
+          "Helmet": {
+            "class_id": 2,
+            "precision_at_best_f1": 0.9003737765934674,
+            "recall_at_best_f1": 0.8690476190476191,
+            "f1_at_best_f1": 0.8844333958310328,
+            "map50": 0.9027712274054752,
+            "map50_95": 0.6239640035958927
+          }
+        }
+      }
+    },
+    "yolo11n": {
+      "val": {
+        "metrics/precision(B)": 0.9089510329354575,
+        "metrics/recall(B)": 0.8737816749292757,
+        "metrics/mAP50(B)": 0.930608174026044,
+        "metrics/mAP50-95(B)": 0.67448474738146,
+        "fitness": 0.7000970900459185,
+        "map": 0.67448474738146,
+        "map50": 0.930608174026044,
+        "map75": 0.7748043182364194,
+        "mp": 0.9089510329354575,
+        "mr": 0.8737816749292757,
+        "per_class": {
+          "BikeWithRider": {
+            "class_id": 0,
+            "precision_at_best_f1": 0.9511324089590616,
+            "recall_at_best_f1": 0.9272727272727272,
+            "f1_at_best_f1": 0.9390510341365647,
+            "map50": 0.9692453495840846,
+            "map50_95": 0.8213969230999275
+          },
+          "NoHelmet": {
+            "class_id": 1,
+            "precision_at_best_f1": 0.8932521934326075,
+            "recall_at_best_f1": 0.821002765312941,
+            "f1_at_best_f1": 0.8556049579307365,
+            "map50": 0.8940384611510309,
+            "map50_95": 0.5694127318467139
+          },
+          "Helmet": {
+            "class_id": 2,
+            "precision_at_best_f1": 0.8824684964147034,
+            "recall_at_best_f1": 0.8730695322021588,
+            "f1_at_best_f1": 0.8777438537801974,
+            "map50": 0.9285407113430165,
+            "map50_95": 0.6326445871977388
+          }
+        }
+      },
+      "test": {
+        "metrics/precision(B)": 0.8832264274763664,
+        "metrics/recall(B)": 0.8704706680275939,
+        "metrics/mAP50(B)": 0.9091454533251303,
+        "metrics/mAP50-95(B)": 0.6506329403847787,
+        "fitness": 0.6764841916788138,
+        "map": 0.6506329403847787,
+        "map50": 0.9091454533251303,
+        "map75": 0.7356249584664956,
+        "mp": 0.8832264274763664,
+        "mr": 0.8704706680275939,
+        "per_class": {
+          "BikeWithRider": {
+            "class_id": 0,
+            "precision_at_best_f1": 0.9115074620706312,
+            "recall_at_best_f1": 0.9402173913043478,
+            "f1_at_best_f1": 0.925639861214249,
+            "map50": 0.9684763314851393,
+            "map50_95": 0.8014604584341445
+          },
+          "NoHelmet": {
+            "class_id": 1,
+            "precision_at_best_f1": 0.8434701881723302,
+            "recall_at_best_f1": 0.8113879003558719,
+            "f1_at_best_f1": 0.8271180589298682,
+            "map50": 0.8696821345387958,
+            "map50_95": 0.5441336444600269
+          },
+          "Helmet": {
+            "class_id": 2,
+            "precision_at_best_f1": 0.8947016321861375,
+            "recall_at_best_f1": 0.8598067124225623,
+            "f1_at_best_f1": 0.8769071647141473,
+            "map50": 0.8892778939514556,
+            "map50_95": 0.6063047182601651
+          }
+        }
+      }
+    }
+  },
+  "interpretation": "Imagem-level pilot. This dataset has no video IDs and is separate from the four-class video protocol."
+}

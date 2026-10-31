@@ -1,0 +1,1053 @@
+{
+  "source_annotations": 8275,
+  "converted_annotations": 8274,
+  "images_with_exif_dimension_correction": [
+    {
+      "filename": "Image_00947.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_00948.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_00952.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_00955.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_00956.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_00958.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_00959.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_00960.jpg",
+      "coco_dimensions": [
+        2506,
+        1128
+      ],
+      "oriented_dimensions": [
+        1128,
+        2506
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_00962.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_00973.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_00977.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01035.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01036.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01037.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01038.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01039.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01040.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01041.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01042.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01044.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01045.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01046.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01047.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01048.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01049.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01050.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01051.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01052.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01053.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01055.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01056.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01057.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01059.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    },
+    {
+      "filename": "Image_01060.jpg",
+      "coco_dimensions": [
+        4624,
+        2604
+      ],
+      "oriented_dimensions": [
+        2604,
+        4624
+      ],
+      "exif_orientation": 6
+    }
+  ],
+  "annotations_clipped_to_image_bounds": [
+    {
+      "annotation_id": 648,
+      "filename": "Image_00177.jpg",
+      "source_bbox": [
+        55.0,
+        103.0,
+        1693.0,
+        2270.0
+      ],
+      "clipped_bbox": [
+        55.0,
+        103.0,
+        1693.0,
+        2269.0
+      ]
+    },
+    {
+      "annotation_id": 1349,
+      "filename": "Image_00364.jpg",
+      "source_bbox": [
+        42.0,
+        143.0,
+        518.0,
+        682.0
+      ],
+      "clipped_bbox": [
+        42.0,
+        143.0,
+        518.0,
+        680.0
+      ]
+    },
+    {
+      "annotation_id": 1557,
+      "filename": "Image_00421.jpg",
+      "source_bbox": [
+        53.0,
+        55.0,
+        267.0,
+        646.0
+      ],
+      "clipped_bbox": [
+        53.0,
+        55.0,
+        267.0,
+        643.0
+      ]
+    },
+    {
+      "annotation_id": 1634,
+      "filename": "Image_00442.jpg",
+      "source_bbox": [
+        71.0,
+        62.0,
+        412.0,
+        698.0
+      ],
+      "clipped_bbox": [
+        71.0,
+        62.0,
+        412.0,
+        697.0
+      ]
+    },
+    {
+      "annotation_id": 1708,
+      "filename": "Image_00464.jpg",
+      "source_bbox": [
+        60.0,
+        47.0,
+        370.0,
+        555.0
+      ],
+      "clipped_bbox": [
+        60.0,
+        47.0,
+        370.0,
+        554.0
+      ]
+    },
+    {
+      "annotation_id": 2394,
+      "filename": "Image_00652.jpg",
+      "source_bbox": [
+        99.0,
+        160.0,
+        459.0,
+        946.0
+      ],
+      "clipped_bbox": [
+        99.0,
+        160.0,
+        459.0,
+        945.0
+      ]
+    },
+    {
+      "annotation_id": 2395,
+      "filename": "Image_00652.jpg",
+      "source_bbox": [
+        799.0,
+        69.0,
+        484.0,
+        1037.0
+      ],
+      "clipped_bbox": [
+        799.0,
+        69.0,
+        484.0,
+        1036.0
+      ]
+    },
+    {
+      "annotation_id": 2714,
+      "filename": "Image_00706.jpg",
+      "source_bbox": [
+        691.0,
+        271.0,
+        238.0,
+        595.0
+      ],
+      "clipped_bbox": [
+        691.0,
+        271.0,
+        236.0,
+        595.0
+      ]
+    },
+    {
+      "annotation_id": 2750,
+      "filename": "Image_00713.jpg",
+      "source_bbox": [
+        46.0,
+        933.0,
+        628.0,
+        741.0
+      ],
+      "clipped_bbox": [
+        46.0,
+        933.0,
+        628.0,
+        739.0
+      ]
+    },
+    {
+      "annotation_id": 2934,
+      "filename": "Image_00743.jpg",
+      "source_bbox": [
+        833.0,
+        536.0,
+        441.0,
+        760.0
+      ],
+      "clipped_bbox": [
+        833.0,
+        536.0,
+        441.0,
+        758.0
+      ]
+    },
+    {
+      "annotation_id": 2991,
+      "filename": "Image_00754.jpg",
+      "source_bbox": [
+        68.0,
+        683.0,
+        458.0,
+        623.0
+      ],
+      "clipped_bbox": [
+        68.0,
+        683.0,
+        458.0,
+        622.0
+      ]
+    },
+    {
+      "annotation_id": 3160,
+      "filename": "Image_00811.jpg",
+      "source_bbox": [
+        1052.0,
+        41.0,
+        1296.0,
+        1924.0
+      ],
+      "clipped_bbox": [
+        1052.0,
+        41.0,
+        1296.0,
+        1921.0
+      ]
+    },
+    {
+      "annotation_id": 3365,
+      "filename": "Image_00888.jpg",
+      "source_bbox": [
+        41.0,
+        73.0,
+        771.0,
+        892.0
+      ],
+      "clipped_bbox": [
+        41.0,
+        73.0,
+        771.0,
+        891.0
+      ]
+    },
+    {
+      "annotation_id": 3727,
+      "filename": "Image_01007.jpg",
+      "source_bbox": [
+        139.0,
+        424.0,
+        606.0,
+        616.0
+      ],
+      "clipped_bbox": [
+        139.0,
+        424.0,
+        605.0,
+        616.0
+      ]
+    },
+    {
+      "annotation_id": 3743,
+      "filename": "Image_01012.jpg",
+      "source_bbox": [
+        615.0,
+        270.0,
+        130.0,
+        285.0
+      ],
+      "clipped_bbox": [
+        615.0,
+        270.0,
+        129.0,
+        285.0
+      ]
+    },
+    {
+      "annotation_id": 3806,
+      "filename": "Image_01034.jpg",
+      "source_bbox": [
+        290.0,
+        589.0,
+        909.0,
+        1470.0
+      ],
+      "clipped_bbox": [
+        290.0,
+        589.0,
+        906.0,
+        1470.0
+      ]
+    },
+    {
+      "annotation_id": 3929,
+      "filename": "Image_01069.jpg",
+      "source_bbox": [
+        1299.0,
+        1564.0,
+        1735.0,
+        2098.0
+      ],
+      "clipped_bbox": [
+        1299.0,
+        1564.0,
+        1725.0,
+        2098.0
+      ]
+    },
+    {
+      "annotation_id": 3933,
+      "filename": "Image_01070.jpg",
+      "source_bbox": [
+        2576.0,
+        1120.0,
+        450.0,
+        1045.0
+      ],
+      "clipped_bbox": [
+        2576.0,
+        1120.0,
+        448.0,
+        1045.0
+      ]
+    },
+    {
+      "annotation_id": 3965,
+      "filename": "Image_01082.jpg",
+      "source_bbox": [
+        16.0,
+        2309.0,
+        2240.0,
+        1789.0
+      ],
+      "clipped_bbox": [
+        16.0,
+        2309.0,
+        2240.0,
+        1787.0
+      ]
+    },
+    {
+      "annotation_id": 4028,
+      "filename": "Image_01107.jpg",
+      "source_bbox": [
+        573.0,
+        584.0,
+        188.0,
+        256.0
+      ],
+      "clipped_bbox": [
+        573.0,
+        584.0,
+        187.0,
+        256.0
+      ]
+    },
+    {
+      "annotation_id": 4680,
+      "filename": "Image_01332.jpg",
+      "source_bbox": [
+        2650.0,
+        2335.0,
+        375.0,
+        470.0
+      ],
+      "clipped_bbox": [
+        2650.0,
+        2335.0,
+        374.0,
+        470.0
+      ]
+    },
+    {
+      "annotation_id": 4698,
+      "filename": "Image_01337.jpg",
+      "source_bbox": [
+        2805.0,
+        2145.0,
+        220.0,
+        409.0
+      ],
+      "clipped_bbox": [
+        2805.0,
+        2145.0,
+        219.0,
+        409.0
+      ]
+    },
+    {
+      "annotation_id": 4738,
+      "filename": "Image_01349.jpg",
+      "source_bbox": [
+        478.0,
+        2387.0,
+        1734.0,
+        1648.0
+      ],
+      "clipped_bbox": [
+        478.0,
+        2387.0,
+        1734.0,
+        1645.0
+      ]
+    },
+    {
+      "annotation_id": 4919,
+      "filename": "Image_01402.jpg",
+      "source_bbox": [
+        1299.0,
+        1563.0,
+        1735.0,
+        2100.0
+      ],
+      "clipped_bbox": [
+        1299.0,
+        1563.0,
+        1725.0,
+        2100.0
+      ]
+    },
+    {
+      "annotation_id": 5078,
+      "filename": "Image_01436.jpg",
+      "source_bbox": [
+        491.0,
+        140.0,
+        333.0,
+        708.0
+      ],
+      "clipped_bbox": [
+        491.0,
+        140.0,
+        331.0,
+        708.0
+      ]
+    },
+    {
+      "annotation_id": 5179,
+      "filename": "Image_01457.jpg",
+      "source_bbox": [
+        37.0,
+        69.0,
+        1216.0,
+        2265.0
+      ],
+      "clipped_bbox": [
+        37.0,
+        69.0,
+        1216.0,
+        2264.0
+      ]
+    },
+    {
+      "annotation_id": 5573,
+      "filename": "Image_01560.jpg",
+      "source_bbox": [
+        32.0,
+        38.0,
+        867.0,
+        1753.0
+      ],
+      "clipped_bbox": [
+        32.0,
+        38.0,
+        867.0,
+        1749.0
+      ]
+    },
+    {
+      "annotation_id": 5639,
+      "filename": "Image_01577.jpg",
+      "source_bbox": [
+        35.0,
+        56.0,
+        915.0,
+        1582.0
+      ],
+      "clipped_bbox": [
+        35.0,
+        56.0,
+        915.0,
+        1581.0
+      ]
+    },
+    {
+      "annotation_id": 6053,
+      "filename": "Image_01708.jpg",
+      "source_bbox": [
+        60.0,
+        35.0,
+        512.0,
+        970.0
+      ],
+      "clipped_bbox": [
+        60.0,
+        35.0,
+        512.0,
+        968.0
+      ]
+    },
+    {
+      "annotation_id": 6078,
+      "filename": "Image_01716.jpg",
+      "source_bbox": [
+        38.0,
+        34.0,
+        593.0,
+        580.0
+      ],
+      "clipped_bbox": [
+        38.0,
+        34.0,
+        593.0,
+        579.0
+      ]
+    },
+    {
+      "annotation_id": 6388,
+      "filename": "Image_01812.jpg",
+      "source_bbox": [
+        54.0,
+        37.0,
+        1807.0,
+        2128.0
+      ],
+      "clipped_bbox": [
+        54.0,
+        37.0,
+        1805.0,
+        2128.0
+      ]
+    },
+    {
+      "annotation_id": 6903,
+      "filename": "Image_01990.jpg",
+      "source_bbox": [
+        0.0,
+        52.0,
+        1155.0,
+        1535.0
+      ],
+      "clipped_bbox": [
+        0.0,
+        52.0,
+        1155.0,
+        1534.0
+      ]
+    },
+    {
+      "annotation_id": 7167,
+      "filename": "Image_02080.jpg",
+      "source_bbox": [
+        0.0,
+        51.0,
+        407.0,
+        1074.0
+      ],
+      "clipped_bbox": [
+        0.0,
+        51.0,
+        406.0,
+        1074.0
+      ]
+    },
+    {
+      "annotation_id": 7168,
+      "filename": "Image_02080.jpg",
+      "source_bbox": [
+        213.0,
+        56.0,
+        194.0,
+        175.0
+      ],
+      "clipped_bbox": [
+        213.0,
+        56.0,
+        193.0,
+        175.0
+      ]
+    },
+    {
+      "annotation_id": 7193,
+      "filename": "Image_02091.jpg",
+      "source_bbox": [
+        12.0,
+        20.0,
+        2009.0,
+        2518.0
+      ],
+      "clipped_bbox": [
+        12.0,
+        20.0,
+        2008.0,
+        2518.0
+      ]
+    },
+    {
+      "annotation_id": 7225,
+      "filename": "Image_02104.jpg",
+      "source_bbox": [
+        22.0,
+        41.0,
+        1859.0,
+        2666.0
+      ],
+      "clipped_bbox": [
+        22.0,
+        41.0,
+        1859.0,
+        2664.0
+      ]
+    },
+    {
+      "annotation_id": 7512,
+      "filename": "Image_02179.jpg",
+      "source_bbox": [
+        46.0,
+        69.0,
+        369.0,
+        671.0
+      ],
+      "clipped_bbox": [
+        46.0,
+        69.0,
+        369.0,
+        670.0
+      ]
+    },
+    {
+      "annotation_id": 7536,
+      "filename": "Image_02187.jpg",
+      "source_bbox": [
+        1.0,
+        59.0,
+        549.0,
+        1537.0
+      ],
+      "clipped_bbox": [
+        1.0,
+        59.0,
+        547.0,
+        1537.0
+      ]
+    },
+    {
+      "annotation_id": 7540,
+      "filename": "Image_02189.jpg",
+      "source_bbox": [
+        70.0,
+        58.0,
+        1332.0,
+        1904.0
+      ],
+      "clipped_bbox": [
+        70.0,
+        58.0,
+        1332.0,
+        1902.0
+      ]
+    }
+  ],
+  "annotations_skipped": [
+    {
+      "annotation_id": 2107,
+      "filename": "Image_00566.jpg",
+      "reason": "nonpositive_image_or_box_dimensions",
+      "source_bbox": [
+        524.0,
+        452.0,
+        1.0,
+        0.0
+      ]
+    }
+  ]
+}

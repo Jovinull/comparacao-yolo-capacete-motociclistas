@@ -1,0 +1,68 @@
+{
+  "dataset": "EdgeVision Dataset",
+  "dataset_id": "j82bnw7gsr",
+  "doi": "10.17632/j82bnw7gsr.1",
+  "version": 1,
+  "license": "CC BY 4.0",
+  "class_names": [
+    "BikeWithRider",
+    "NoHelmet",
+    "Helmet"
+  ],
+  "images": 2392,
+  "instances": 8275,
+  "converted_instances": 8274,
+  "clipped_instances": 39,
+  "skipped_instances": 1,
+  "images_with_exif_dimension_correction": 34,
+  "reencoded_training_images": 222,
+  "seed": 42,
+  "split_ratios": {
+    "train": 0.8,
+    "val": 0.1,
+    "test": 0.1
+  },
+  "splits": {
+    "train": {
+      "images": 1913,
+      "images_with_class": {
+        "BikeWithRider": 1897,
+        "NoHelmet": 1321,
+        "Helmet": 1076
+      },
+      "instances_by_class": {
+        "BikeWithRider": 3040,
+        "NoHelmet": 2264,
+        "Helmet": 1331
+      }
+    },
+    "val": {
+      "images": 239,
+      "images_with_class": {
+        "BikeWithRider": 238,
+        "NoHelmet": 165,
+        "Helmet": 134
+      },
+      "instances_by_class": {
+        "BikeWithRider": 385,
+        "NoHelmet": 265,
+        "Helmet": 172
+      }
+    },
+    "test": {
+      "images": 240,
+      "images_with_class": {
+        "BikeWithRider": 238,
+        "NoHelmet": 166,
+        "Helmet": 135
+      },
+      "instances_by_class": {
+        "BikeWithRider": 368,
+        "NoHelmet": 281,
+        "Helmet": 168
+      }
+    }
+  },
+  "images_downloaded_this_run": 2392,
+  "image_bytes": 1601845084
+}

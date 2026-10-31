@@ -1,0 +1,162 @@
+﻿RELATÓRIO DA COMPARAÇÃO YOLO - EDGEVISION
+Execução: 20261030_225248
+Status: concluída
+
+IMPORTANTE
+Este resultado é um piloto auxiliar com imagens EdgeVision e três classes. Ele
+não substitui o experimento principal planejado no artigo, que usa quatro classes
+e vídeos. A base não fornece identificadores de vídeo; portanto, esta execução
+não permite separação nem análise pareada por vídeo.
+
+1. RESUMO DA EXECUÇÃO
+
+Foram treinados e avaliados YOLOv8n e YOLO11n, ambos iniciados com pesos
+pré-treinados. O tempo total foi de 9,092 horas. O treino de cada modelo foi
+limitado por tempo e interrompido ao final de uma época: YOLOv8n completou 27
+épocas em 4,556 h; YOLO11n completou 24 épocas em 4,506 h. O número diferente de
+épocas é esperado neste protocolo de tempo limitado; a comparação é por tempo
+aproximadamente igual, não por número igual de épocas.
+
+No conjunto de teste, os resultados agregados foram próximos. YOLOv8n obteve
+mAP@0,5:0,95 de 65,98%, contra 65,06% do YOLO11n. Essa diferença pequena, em uma
+única execução, não demonstra superioridade estatística de um modelo.
+
+2. COMPUTADOR E AMBIENTE
+
+- Sistema operacional: Windows 11, build 10.0.26200.
+- Processador: Intel Core i5-1335U, 10 núcleos / 12 processadores lógicos.
+- Memória RAM instalada: 15,7 GiB.
+- GPU instalada: Intel Iris Xe Graphics integrada; não foi usada no treino.
+- Dispositivo efetivo: CPU; CUDA indisponível.
+- Python: 3.12.10.
+- PyTorch: 2.5.1+cpu.
+- Ultralytics: 8.3.75.
+- Revisão do código do perfil: commit c820358 (feat: add CPU EdgeVision comparison profile).
+
+3. BASE E PREPARAÇÃO DOS DADOS
+
+Fonte: EdgeVision Dataset, Mendeley Data, versão 1, DOI
+10.17632/j82bnw7gsr.1. Licença declarada: Creative Commons Attribution 4.0
+(CC BY 4.0). Citação e arquivos de origem estão incluídos no projeto.
+
+- Imagens: 2.392 fotografias JPEG.
+- Classes, na ordem do modelo: BikeWithRider, NoHelmet, Helmet.
+- Anotações COCO originais: 8.275 caixas.
+- Caixas convertidas para YOLO: 8.274.
+- A divisão foi estratificada por combinação de classes presentes na imagem, com
+  semente 42, em nível de imagem: treino 1.913, validação 239, teste 240.
+- Caixas por partição: treino 6.635; validação 822; teste 817.
+
+Contagem de caixas por classe:
+
+Partição     BikeWithRider   NoHelmet   Helmet   Total
+Treino             3.040       2.264    1.331   6.635
+Validação             385         265      172     822
+Teste                 368         281      168     817
+
+O downloader preserva as imagens oficiais em data/edgevision/source/images e
+confere tamanho e SHA-256. A verificação após a execução encontrou 0 divergências
+de hash nos 2.392 originais. Foram preparadas cópias de treino separadas em
+data/edgevision/prepared/images, sem sobrescrever os originais: 222 cópias foram
+regravadas para reparar arquivos JPEG sem marcador final e/ou normalizar EXIF; 34
+imagens tiveram a rotação EXIF aplicada. Rótulos derivados usam as dimensões das
+cópias preparadas. A conversão ajustou 39 caixas que excediam a borda da imagem e
+excluiu uma caixa de altura zero (Image_00566.jpg, anotação COCO 2107). Todos os
+ajustes e exclusões estão listados nos relatórios JSON deste pacote.
+
+4. CONFIGURAÇÃO EXPERIMENTAL
+
+- Modelos: yolov8n.pt e yolo11n.pt, pesos pré-treinados.
+- Tamanho de entrada: 640 x 640; lote: 4; dispositivo: CPU; workers: 2.
+- Máximo configurado: 100 épocas; patience: 20; fechamento de mosaic: época 10.
+- Otimizador: SGD; lr0: 0,01; lrf: 0,01; momentum: 0,937;
+  weight_decay: 0,0005.
+- Semente: 42; deterministic: true; amp: false; cache de imagens: false.
+- Orçamento nominal: até 4,5 h de treino por modelo e reserva de até 3 h para
+  avaliação. A parada ocorre ao final da época, portanto pode ultrapassar o teto
+  por alguns minutos. O tempo observado total foi 9,092 h.
+- Avaliação: validação e teste separados; entrada 640; lote 1; conf=0,001;
+  IoU de NMS=0,7; max_det=300; exportação JSON de predições habilitada.
+- A validação foi usada durante o treino e novamente para relatório. O conjunto
+  de teste foi avaliado depois do treino; os resultados abaixo referem-se ao
+  checkpoint best.pt de cada modelo.
+
+5. MÉTRICAS AGREGADAS
+
+Precisão e revocação são os valores agregados reportados pelo Ultralytics no
+ponto de melhor F1. mAP@0,5 e mAP@0,5:0,95 são apresentados como porcentagens.
+
+Modelo    Partição   Precisão   Revocação   mAP@0,5   mAP@0,5:0,95
+YOLOv8n   Validação    90,85%      87,49%    93,20%       67,90%
+YOLOv8n   Teste        88,36%      87,58%    91,35%       65,98%
+YOLO11n   Validação    90,90%      87,38%    93,06%       67,45%
+YOLO11n   Teste        88,32%      87,05%    90,91%       65,06%
+
+6. MÉTRICAS POR CLASSE
+
+Precisão, revocação e F1 por classe são calculados no ponto de melhor F1 do
+Ultralytics. AP usa as áreas sob as curvas de precisão-revocação.
+
+Modelo    Split      Classe          Precisão  Revocação     F1   AP@0,5  AP@0,5:0,95
+YOLOv8n   Validação   BikeWithRider     93,47%     92,99%  93,23%  97,27%       82,96%
+YOLOv8n   Validação   NoHelmet          90,94%     82,26%  86,38%  89,99%       57,20%
+YOLOv8n   Validação   Helmet            88,14%     87,21%  87,67%  92,33%       63,54%
+YOLOv8n   Teste       BikeWithRider     90,30%     93,64%  91,94%  97,52%       80,71%
+YOLOv8n   Teste       NoHelmet          84,73%     82,21%  83,45%  86,26%       54,85%
+YOLOv8n   Teste       Helmet            90,04%     86,90%  88,44%  90,28%       62,40%
+YOLO11n   Validação   BikeWithRider     95,11%     92,73%  93,91%  96,92%       82,14%
+YOLO11n   Validação   NoHelmet          89,33%     82,10%  85,56%  89,40%       56,94%
+YOLO11n   Validação   Helmet            88,25%     87,31%  87,77%  92,85%       63,26%
+YOLO11n   Teste       BikeWithRider     91,15%     94,02%  92,56%  96,85%       80,15%
+YOLO11n   Teste       NoHelmet          84,35%     81,14%  82,71%  86,97%       54,41%
+YOLO11n   Teste       Helmet            89,47%     85,98%  87,69%  88,93%       60,63%
+
+A classe NoHelmet teve os menores AP@0,5:0,95 no teste: 54,85% para YOLOv8n e
+54,41% para YOLO11n.
+
+7. VELOCIDADE OBSERVADA
+
+Nos logs da avaliação de teste, a inferência foi 73,8 ms/imagem para YOLOv8n e
+81,7 ms/imagem para YOLO11n (aproximadamente 13,55 e 12,24 imagens/s,
+respectivamente). Sao medidas do detector na CPU; não incluem decodificacao de
+vídeo, leitura de fluxo, rastreamento ou outras etapas de um sistema de
+vídeomonitoramento.
+
+8. INTERPRETAÇÃO E LIMITAÇÕES
+
+- Nesta execução, YOLOv8n ficou 0,92 ponto percentual acima em mAP@0,5:0,95 no
+  teste e 0,44 ponto acima em mAP@0,5. A diferença é descritiva; não houve
+  repetições com várias sementes nem teste de significância.
+- Os modelos receberam orçamentos de tempo semelhantes, mas terminaram com 27 e
+  24 épocas. Esta não é uma comparação com número fixo de épocas.
+- A partição foi feita por imagem. Como a base não fornece video_id, não é
+  possível garantir independência entre imagens relacionadas da mesma origem.
+- A base tem três classes e imagens estáticas. Ela não mede detecção temporal em
+  vídeo nem usa as quatro classes do protocolo principal do artigo.
+- Portanto, estes números servem como piloto e verificação do fluxo, não como
+  resultado final do experimento de vídeomonitoramento do artigo.
+
+9. ARQUIVOS E REPRODUÇÃO
+
+Execução local completa: runs/edgevision/20261030_225248/.
+O diretório local contém checkpoints best.pt/last.pt, resultados por época,
+curvas, matrizes de confusão e predições JSON de validação e teste.
+
+Este pacote versionado contém summary.json, summary.csv, per_class.csv,
+resultados por época de cada modelo, configuração, divisão do dataset, manifest
+SHA-256, relatórios de conversão/pre-processamento e predições JSON. Imagens e
+pesos binários não foram adicionados ao GitHub; os originais são obtidos na fonte
+citada acima e os pesos iniciais são pré-treinados do Ultralytics.
+
+Comandos executados a partir da raiz do projeto:
+
+  .\env\Scripts\python.exe scripts\run_edgevision_comparison.py --config configs\edgevision_12h.yaml --check-data-only
+  .\env\Scripts\python.exe scripts\run_edgevision_comparison.py --config configs\edgevision_12h.yaml
+
+Os arquivos de execuções anteriores 20261030_222817 e 20261030_223359 são
+tentativas incompletas e não fazem parte deste relatório. Use exclusivamente o
+run 20261030_225248 para estas métricas.
+
+Repositório do projeto:
+https://github.com/Jovinull/comparacao-yolo-capacete-motociclistas
+

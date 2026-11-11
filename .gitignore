@@ -14,4 +14,5 @@ __pycache__/
 # Vídeos, quadros e anotações do grupo não entram no Git
 /data/helmet/*
 !/data/helmet/.gitkeep
+/data/helmet_osf/
 /data/edgevision/

@@ -15,7 +15,7 @@ import yaml
 
 
 SPLITS = ("train", "val", "test")
-EXPECTED_NAMES = (
+DEFAULT_NAMES = (
     "motocicleta",
     "motociclista_com_capacete",
     "motociclista_sem_capacete",
@@ -132,14 +132,18 @@ def validate_dataset(data_yaml_path: Path) -> DatasetInfo:
     warnings: list[str] = []
     root = _resolve_dataset_root(config, data_yaml_path)
     names = _normalize_names(config.get("names"))
-    if names != EXPECTED_NAMES:
-        errors.append(f"names precisa ser {list(EXPECTED_NAMES)} na ordem definida; recebido {list(names)}")
+    if not names:
+        names = DEFAULT_NAMES
+    if len(names) < 2:
+        errors.append("names precisa definir pelo menos duas classes")
+    if len(set(names)) != len(names):
+        errors.append("names não pode conter nomes de classe duplicados")
     try:
         declared_class_count = int(config.get("nc", len(names) or 0))
     except (TypeError, ValueError):
         declared_class_count = -1
-    if declared_class_count != len(EXPECTED_NAMES):
-        errors.append(f"nc precisa ser {len(EXPECTED_NAMES)}")
+    if declared_class_count != len(names):
+        errors.append(f"nc precisa ser igual à quantidade de nomes ({len(names)})")
 
     declared_split_paths: dict[str, list[Path]] = {}
     for split in SPLITS:

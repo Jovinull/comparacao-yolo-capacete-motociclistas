@@ -272,6 +272,9 @@ def main() -> int:
     (run_root / "data.yaml").write_text(
         yaml.safe_dump(archived_data_config, allow_unicode=True, sort_keys=False), encoding="utf-8"
     )
+    # Ultralytics resolves a relative "path" against its datasets directory, so
+    # train and evaluate with the archived copy whose path is absolute.
+    runtime_data_yaml = (run_root / "data.yaml").resolve()
     (run_root / "dataset_validation.json").write_text(
         json.dumps(dataset.report, ensure_ascii=False, indent=2), encoding="utf-8"
     )
@@ -291,7 +294,7 @@ def main() -> int:
         train_args = dict(train_config)
         train_args.update(
             {
-                "data": str(data_yaml.resolve()),
+                "data": str(runtime_data_yaml),
                 "project": str(run_root),
                 "name": f"{model_name}_train",
                 "exist_ok": False,
@@ -372,7 +375,7 @@ def main() -> int:
         _reset_cuda_peak(torch)
         with PeakRssMonitor() as host_memory:
             metrics = model.val(
-                data=str(data_yaml.resolve()),
+                data=str(runtime_data_yaml),
                 split=str(evaluation_config.get("split", "test")),
                 imgsz=eval_imgsz,
                 batch=eval_batch,

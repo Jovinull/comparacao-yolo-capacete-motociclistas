@@ -22,6 +22,9 @@ DEFAULT_NAMES = (
     "capacete",
 )
 ALLOWED_CONDITIONS = {"low_light", "occlusion", "far_camera", "low_resolution", "passenger"}
+# Labels are written with 8 decimals, so boxes touching an image edge can
+# overshoot by rounding error (~5e-9); tolerate that but reject real overflow.
+BOX_EDGE_TOLERANCE = 1e-6
 
 
 @dataclass(frozen=True)
@@ -106,10 +109,10 @@ def _read_label_file(label_path: Path, num_classes: int, errors: list[str]) -> C
         if width <= 0.0 or height <= 0.0:
             errors.append(f"{prefix}: width e height precisam ser maiores que zero")
             continue
-        if x_center - width / 2 < 0 or x_center + width / 2 > 1:
+        if x_center - width / 2 < -BOX_EDGE_TOLERANCE or x_center + width / 2 > 1 + BOX_EDGE_TOLERANCE:
             errors.append(f"{prefix}: caixa ultrapassa a largura da imagem")
             continue
-        if y_center - height / 2 < 0 or y_center + height / 2 > 1:
+        if y_center - height / 2 < -BOX_EDGE_TOLERANCE or y_center + height / 2 > 1 + BOX_EDGE_TOLERANCE:
             errors.append(f"{prefix}: caixa ultrapassa a altura da imagem")
             continue
         counts[class_id] += 1

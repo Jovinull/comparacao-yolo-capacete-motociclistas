@@ -180,6 +180,35 @@ def _paired_video_bootstrap(first: list[dict], second: list[dict], samples: int,
     }
 
 
+def _finished_training_record(run_root: Path, model_name: str, weights_name: str) -> dict:
+    """Rebuild the training record of a model that already finished training in run_root.
+
+    Peak memory is only observable while training runs, so it is reported as not measured.
+    """
+    training_run = run_root / f"{model_name}_train"
+    candidate = (training_run / "weights" / "best.pt").resolve()
+    history_path = training_run / "results.csv"
+    if not candidate.is_file() or not history_path.is_file():
+        raise RuntimeError(f"Treino incompleto de {model_name} em {training_run}")
+    with history_path.open(encoding="utf-8", newline="") as stream:
+        history = [{key.strip(): value for key, value in row.items() if key} for row in csv.DictReader(stream)]
+    if not history:
+        raise RuntimeError(f"Histórico de treino vazio: {history_path}")
+    return {
+        "initial_weights": weights_name,
+        "best_weights": str(candidate),
+        "training_run": str(training_run.resolve()),
+        "training_cost": {
+            "wall_time_seconds": float(history[-1]["time"]),
+            "wall_time_source": "results.csv",
+            "epochs_completed": len(history),
+            "peak_host_rss_mb": None,
+            "peak_gpu_memory": {"allocated_mb": None, "reserved_mb": None},
+            "best_weights_size_mb": candidate.stat().st_size / (1024**2),
+        },
+    }
+
+
 def _runtime_info(torch, ultralytics) -> dict:
     cuda_available = bool(torch.cuda.is_available())
     return {
@@ -200,6 +229,12 @@ def main() -> int:
     parser.add_argument("--config", type=Path, default=PROJECT_ROOT / "configs" / "experiment.yaml")
     parser.add_argument("--data", type=Path, help="Sobrescreve data_yaml da configuração")
     parser.add_argument("--device", help="Sobrescreve o dispositivo (ex.: 0 ou cpu)")
+    parser.add_argument(
+        "--eval-only",
+        type=Path,
+        metavar="RUN_DIR",
+        help="Não treina: avalia os pesos já treinados em uma pasta de execução existente",
+    )
     args = parser.parse_args()
 
     config_path = args.config.resolve()
@@ -263,10 +298,19 @@ def main() -> int:
     output_base = Path(config.get("output_dir", "runs"))
     if not output_base.is_absolute():
         output_base = PROJECT_ROOT / output_base
-    run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
-    run_root = output_base / run_id
-    run_root.mkdir(parents=True, exist_ok=False)
-    shutil.copy2(config_path, run_root / "experiment.yaml")
+    if args.eval_only:
+        run_root = args.eval_only.resolve()
+        run_id = run_root.name
+        archived_config = run_root / "experiment.yaml"
+        if not archived_config.is_file():
+            parser.error(f"Execução sem experiment.yaml: {run_root}")
+        if yaml.safe_load(archived_config.read_text(encoding="utf-8")) != config:
+            parser.error("A configuração difere da arquivada na execução; use o experiment.yaml dela")
+    else:
+        run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+        run_root = output_base / run_id
+        run_root.mkdir(parents=True, exist_ok=False)
+        shutil.copy2(config_path, run_root / "experiment.yaml")
     archived_data_config = yaml.safe_load(data_yaml.resolve().read_text(encoding="utf-8")) or {}
     archived_data_config["path"] = str(dataset.root)
     (run_root / "data.yaml").write_text(
@@ -289,6 +333,10 @@ def main() -> int:
     for model_spec in model_specs:
         model_name = str(model_spec["name"])
         weights_name = str(model_spec["weights"])
+        if args.eval_only:
+            results[model_name] = _finished_training_record(run_root, model_name, weights_name)
+            best_weights[model_name] = Path(results[model_name]["best_weights"])
+            continue
         print(f"\n=== Treinando {model_name} ===")
         model = _load_model(weights_name, weights_dir)
         train_args = dict(train_config)
@@ -379,6 +427,8 @@ def main() -> int:
                 split=str(evaluation_config.get("split", "test")),
                 imgsz=eval_imgsz,
                 batch=eval_batch,
+                # Extra loader processes do not change metrics and can exhaust host memory.
+                workers=int(evaluation_config.get("workers", 0)),
                 device=device,
                 conf=float(evaluation_config.get("conf", confidence_floor)),
                 iou=nms_iou,
@@ -449,6 +499,7 @@ def main() -> int:
     )
     results_summary = {
         "run_id": run_id,
+        "evaluation_only": bool(args.eval_only),
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "runtime": runtime,
         "device_used": device,

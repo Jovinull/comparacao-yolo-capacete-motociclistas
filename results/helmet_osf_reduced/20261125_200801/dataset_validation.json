@@ -1,0 +1,34 @@
+{
+  "data_yaml": "data/helmet_osf/data.yaml",
+  "dataset_root": "data/helmet_osf",
+  "images_by_split": {
+    "test": 18200,
+    "train": 63600,
+    "val": 9200
+  },
+  "videos_by_split": {
+    "train": 636,
+    "val": 92,
+    "test": 182
+  },
+  "condition_tagged_frames_by_split": {
+    "train": {},
+    "val": {},
+    "test": {}
+  },
+  "objects_by_split_and_class": {
+    "train": {
+      "motocicleta_todos_com_capacete": 121107,
+      "motocicleta_com_ocupante_sem_capacete": 78496
+    },
+    "val": {
+      "motocicleta_todos_com_capacete": 17312,
+      "motocicleta_com_ocupante_sem_capacete": 11933
+    },
+    "test": {
+      "motocicleta_todos_com_capacete": 33714,
+      "motocicleta_com_ocupante_sem_capacete": 20815
+    }
+  },
+  "warnings": []
+}
